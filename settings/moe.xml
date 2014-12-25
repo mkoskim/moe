@@ -1,0 +1,15 @@
+<settings>
+    <host>
+        <Window height="700" width="750"/>
+        <IndexView index_width="300"/>
+        <DraftView index_width="200"/>
+
+        <PMWindow height="800" width="900" />
+    </host>
+
+    <View name="Contiguous" />
+    <SceneEdit Synopses="False" Comments="False" />
+    <DraftEdit Synopses="False" />
+        
+    <status>Sketch</status>
+</settings>

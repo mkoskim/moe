@@ -1,0 +1,149 @@
+-------------------------------------------------------------------------------
+
+NEXT: Version 0.1.9:
+
+- Fixed bug showing synopses invisible in outline view
+
+- In title item, put synopsis to separate tab, and use scrollbox
+
+- Added coverpage text field to title
+
+- Inserting file: scene is named by file name
+
+- Alt-X now creates empty Scene when used at bottom of content
+
+- (PM) exclude .moerc from search path
+
+- (UI) Context menu for index items
+
+- Slightly improved RTF import
+
+-------------------------------------------------------------------------------
+
+Version 0.1.8:
+
+- Corrected bug in Merge action (Alt-M)
+
+- Synopses visibility defaults to false (index & draft views)
+
+- Index has now popup menu, right side toolbar is now empty
+
+- Corrected bug in Synopsis view
+
+- (FIXED) There are some mysteries in "dirty" management: document
+  seems to be dirty, but title is not updated
+
+- (FIXED) There is something wrong in window size storing & retrieving
+
+- (FIXED) Flattening does not short-cut when meeting non-included
+  groups, instead choses scenes inside of them.
+
+- Store synopsis/comments visibility to settings
+
+- "Conflict" field removed from Scene items
+
+- On fresh installation, store author name to settings when it is
+  given first time. Same to website. This would need support from
+  config subsystem side; function to tell in what "level" a setting
+  is currently stored.
+
+- Dialogs now use main window as parent (not in the center of the
+  screen anymore)
+
+- Improved FlatBuf usage. Now "Draft" shows synopsis + content,
+  and "Outline" view uses FlatBuf.
+
+- Some fine tuning to draft view:
+  * Opening new file: author + title + content, but no index, synopsis
+  * Edit draft: index + synopsis + content, but no author
+
+-------------------------------------------------------------------------------
+
+Version 0.1.7:
+
+- (PM) Save UI settings
+
+- (Merge & Split) Insert parts of different story to another
+  one (like snippets)
+
+- Dirty marking in Cont'd editing
+
+- Saving in Contiguous View should work now
+
+- .moerc: UI settings off from actual content
+
+- Save view to settings
+
+- Cont'd editing ToC
+
+- Basics of Contiguous View:
+  * Flattening text: creating contiguous buffer from chosen
+    scenes.
+  * Deflattening: getting the buffer, splitting scenes, and
+    replacing content in buffers.
+
+- When exporting RTF, opening the result automatically; maybe
+  automatic reloading the document after changes?
+
+- Replacing different quotes with '"' (when copy-pasting from
+  different sources)
+
+- Also, menu item to use texifier, and automatic open of results
+
+- Always save (even non-dirty), to "fixate" character set replacements
+
+- UI settings are not correctly restored: seems that window size
+  works, but panel width does not
+
+- Started preparations for first official file format
+
+- Settings moved to .moerc/
+
+- Searching: not working
+
+- Texifier project statistics file changed from "STATS" to ".statistics"
+
+- Older (pre-2.6) piping code (helpers.py) removed
+
+- Removed TODO-field (from file format, and editor); field is ignored
+  for backward compatibility
+
+- Implemented "Synopses" view, hierarchial edit for synopses
+
+- Tuned "Outline" view to concentrate on scenes
+
+- Implemented special "New" view to quickly edit new documents.
+
+- Removed '\r' when reading in file, to detect '\n\n' correctly
+
+-------------------------------------------------------------------------------
+
+Version 0.1.6:
+
+- Default settings for author & website are now equal to ones used in
+  texifier.
+
+- Fixed config writing (checking existence of ./personal folder)
+
+- Tested fresh install with texifier, no problems.
+
+- Fixing problems with Windows (e.g. paths when launching, loading and
+  saving)
+
+- All the usual: fixing bugs, quirks and such.
+
+-------------------------------------------------------------------------------
+
+Version 0.1.3:
+
+- Changed personal settings from ./moe/settings to ./personal, outside
+  from moe directory tree. This allows (1) clean updates by removing
+  moe directory, and (2) sharing settings with texifier.
+
+- Author and website are now read from texifier setting files
+  (personal/author.tex and personal/website.tex)
+
+- All the usual: fixing bugs, quirks and such.
+
+-------------------------------------------------------------------------------
+

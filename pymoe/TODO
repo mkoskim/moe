@@ -1,0 +1,299 @@
+*******************************************************************************
+*******************************************************************************
+
+DONE: (Take to CHANGELOG)
+
+*******************************************************************************
+*******************************************************************************
+
+TODO:
+
+-------------------------------------------------------------------------------
+
+WORKSET: Top level sketching with synopses. How...
+
+- Create draft view to edit synopses... Or in general, improve synopsis
+  editing.
+
+- Merging groups
+
+- Splitting groups
+
+- Synopsis split to scenes/groups
+
+- (?) Converting group to scene, and scene to group.
+
+- Generate synopsis from sublevel elements
+
+- NOTE: Top-level synopses can be long, so rethink how they are
+  edited (i.e. use scrolled boxes)
+
+-------------------------------------------------------------------------------
+
+VIEW MECHANISM FIXING: In general there is a need to go through view
+mechanism and fix it. Lots of bugs:
+
+- (Fix) Sometimes Index View notebook does not come back when changing
+  views.
+
+- (Fix) When opening file in Synopses view, child synopsis boxes are
+  empty.
+
+- (Fix) Reloading does not work: neither works close + load/new
+
+- (Fix) Index View resets editing notebook to first item, when changing back
+  from different view. At least some times... Cannot reproduce.
+
+-------------------------------------------------------------------------------
+
+FIX:
+
+- (Fix) Make title synopsis box expanding
+
+- (Fix) In draft view, if you empty synopsis, it will become entirely
+  unmodifiable.
+
+- (Fix) Undo/redo does not work in detached windows
+
+- In-editor RTF export:
+  * Do not work for 'Ylimielet'
+  * Do not understand italics (_XXX_), or any other texifier things
+  * Do not understand (french) special characters
+  * Mainly, the reason is that moe does not contain texifier;
+    I'd need to merge at least some parts from texifier to
+    moe.
+
+- When texifying to RTF, equations do not work
+
+- (Split/Merge) ViewIndex:writeItem2File crashes, if title is selected
+  (it does not make sense to create a copy of a file this way).
+
+- Document has mainwnd, would be better to rename it editor/editwnd
+
+-------------------------------------------------------------------------------
+
+TEXIFIER:
+
+- Texifier directory name should be changed from 'defaults' to e.g.
+  'texifier'
+
+- When texifying, check that the link in directory is correct (in case
+  user has moved the directory). Basically, we could always re-create
+  the link.
+
+-------------------------------------------------------------------------------
+
+IMPROVEMENTS:
+
+- File chooser dialog: loading/picking/inserting files would need to have
+  the previous directory in the list. Examine, how you can affect to this.
+  
+- Multiple choices when inserting/picking files
+
+- Draft editing to look more like the end result (parts, chapters, names,
+  numbering, etc)
+
+- Would be good to have more visual focus (if focus is in index box, content
+  box or synopsis box), for merge/split operations
+
+- Detach: Windows to side pane
+
+- How about: Part separator for documents using 'Hidden Parts'
+
+- Write converters and use them when dragging'n'dropping text
+  to MOE
+
+-------------------------------------------------------------------------------
+
+JANITORIAL:
+
+- Formatting to scenes (bold, italic): Implemented, but not throughly
+  tested when exporting. For implementation, see
+  moeExport.py:getPgrFmt()
+
+- At the moment, there is incorrect special character replacements
+  in moeExport.py for Latex (e.g. é -> e). Correct them!
+
+- Remove synopsis/comments 'flickering' when changing views
+
+- Add info box, when trying inserting snippets without having
+  a snippet file.
+
+- Add button to edit snippet file to Preferences
+
+- When trying to insert snippet without having a file, pop up a
+  dialog
+
+-------------------------------------------------------------------------------
+
+MISC:
+
+- Store group expand/collapse information to file
+
+- When exporting long stories, put author name above the title
+
+- Some sort of improved TODO/comments thingie... Commenting would be
+  nice... Meaning comments tied to specific text block, and to be able
+  to browse them. Maybe.
+
+- Text specific dictionaries for spell checker
+
+- Name generator integration
+
+- Make word count in index optional
+
+- Exporting metadata sheets
+
+- OK/NOK checkbuttons?
+
+- Configuring default applications for opening doc/rtf, PDF, website,
+  file manager and text editor
+
+- Versioning?
+
+- Italics with _XXX_
+
+- Breaks with ---
+
+- Multi-selection in index
+
+-------------------------------------------------------------------------------
+
+CONTIGUOUS EDITING MODE:
+
+- Read-only: During flatten editing, normal buffers could be
+  read-only, to prevent using detached windows to edit file.
+
+- Note detached windows
+
+- Cursor positioning when moving between views
+
+-------------------------------------------------------------------------------
+
+MENUS & ACTIONS:
+
+- (UI) At the moment, user can do different actions when in incorrect
+  view. I should get rid of these, that is, organize things so
+  that context-specific things are in context-specific menus
+
+- (UI) Accelerators
+
+- (UI) Enable/disable menu items, or remove them entirely when they
+  are not usable
+
+-------------------------------------------------------------------------------
+
+IMPORT & EXPORT: Importing is important to bring projects made with different
+editors to MOE. Exporting is important to switch to another editor. Here
+are some file formats:
+
+- LibreOffice makes pretty good job, can we use it?
+
+- yWriter: Importing & exporting yWriter projects would be good. yWriter
+  stores text in RTF files under directory, and has XML index file to
+  keep files in specific order.
+
+- Scrivener: Scrivener uses system very similar to yWriter.
+
+- RTF: RTF is one of the most used format to share texts. It would be
+  good to have good support to this format, both reading RTF files in
+  and to export projects to RTF.
+
+- Plain ASCII: One of the most basic format to exchange texts between
+  different editors. Furthermore, it would be just purely excellent,
+  if MOE could be used to create e.g. scientific articles with
+  LaTeX.
+
+- NOTE: When getting text block, check line length: if block contains
+  very long lines, assume that \n is paragraph separator.
+
+- Improved RTF file importing, to convert older projects to MOE
+  files
+
+- (Janitorial) Combine character replace tables in moeReadRTF and
+  moeExport
+
+- ODT: odt2txt: https://github.com/dstosberg/odt2txt/
+
+-------------------------------------------------------------------------------
+
+COMMENTING: The idea is that you export RTF and give it to someone to
+comment it. When getting commented RTF back, it is compared to original
+RTF, and the comments are brought to editor. Implementing this feature
+may need some serious development...
+
+-------------------------------------------------------------------------------
+
+LINKING EXT DOCS:
+
+- (Ext docs) Make design:
+  * No "hard linking" of MOE files inside each other. One piece of
+    text is unique. It does not exist in other writing in exactly same form.
+    Collections are different story, but they can be made by hand (I think)
+
+  * Maybe external to document, that is, links are not stored inside MOE
+    file, instead there is external project database, which links things.
+    This way, when sending & receiving MOE files, you don't get links to
+    docs you don't have.
+
+- "Hyperlinks" to texts to different documents
+
+- Scanning & picking external docs
+
+- Some indirection: when relocating a moved doc, it would then be
+  correct in all other .moe files
+
+- Database system? To link characters, worlds etc together
+
+-------------------------------------------------------------------------------
+
+PROJECT MANAGER:
+
+- (PM) Directory filtering to Project Manager
+
+- (PM) Project manager could have only 1 instance: it could be
+  integrated to moe
+
+- (PM) More efficient packing of choices... To make room for
+  directory filtering. Put checkboxes into scrollable list.
+  
+-------------------------------------------------------------------------------
+
+TAGGING: Tagging may be excellent tool for managing larger and
+more complex stories. You may create tags, mark scenes with tags,
+filter scenes with tags, and remove tags.
+
+- (Tags) Creating & deleting tags
+
+- (Tags) Marking scenes with tags
+
+- (Tags) Filtering scenes based on tags
+
+- (Tags) Creating tag-specific comment fields to scenes
+
+-------------------------------------------------------------------------------
+
+SEARCH, REPLACE, SPELLCHECK: Current experimental implementation does not
+work at all.
+
+- (Search) Implement basic search & replace
+
+- (Spell) Implement basic spellcheck
+
+- (Spell) Spellchecker should be tied to document language
+
+-------------------------------------------------------------------------------
+
+STORY MERGING & SPLITTING:
+
+- (Merge & split) Create separate 'moerge' (?) for moving parts between
+  two MOE files.
+
+-------------------------------------------------------------------------------
+
+INTERNATIONALIZATION: Currently no implementation. UI is in Engish, writing
+is in Finnish...
+
+- (I18N) Implement basic I18n infra (UI elements, spellchecking). Remember that
+  UI language can be different to document language!
+
