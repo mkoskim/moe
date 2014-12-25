@@ -12,9 +12,5 @@ vgcore.*
 *.pyc
 .~lock.*
 local/*
-moeqt/build/*
-moeqt/build-win/*
-moeqt/build-linux/*
-moeqt/local/*
-moeqt.zip
-moeqt.old/*
+testing/*
+
