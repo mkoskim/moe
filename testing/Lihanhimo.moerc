@@ -1,9 +1,0 @@
-<settings>
-    <host name="katja-K53SV">
-        <IndexView index_width="200" />
-        <ContdView index_width="200" />
-        <Window height="677" width="750" />
-        <SceneEdit Comments="False" Synopses="True" />
-        </host>
-    <View name="Index" />
-    </settings>
