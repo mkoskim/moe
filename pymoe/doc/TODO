@@ -8,6 +8,11 @@ DONE: (Take to CHANGELOG)
 
 TODO:
 
+- moe is now at github: Need mechanism to set root directory so that
+  stories are located in different directory than the Python scripts.
+
+- Create directory for TODO and CHANGELOG
+
 -------------------------------------------------------------------------------
 
 WORKSET: Top level sketching with synopses. How...
