@@ -1,8 +1,8 @@
 
 
 
-                        MOE editor for writers
-                        ======================
+MOE editor for writers
+====================
 
 
 *In English:* moe - let's say it's abbreviation from Markus' Own Editor - is a
