@@ -1,0 +1,45 @@
+<story>
+    <TitleItem included="True" opt_chapters="separated" opt_epilogue="None" opt_prologue="None" opt_toplevel="chapters" type="shortstory" words="345">
+        <website>http://mkoskim.drivehq.com</website>
+        <status>Sketch</status>
+        <subtitle />
+        <title>Lorem</title>
+        <year />
+        <author>Markus Koskimies</author>
+        <publisher />
+        <synopsis />
+        <version />
+        <deadline />
+        <published />
+        <translated />
+        </TitleItem>
+    <SceneItem formatting="normal" included="True" words="69">
+        <content>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</content>
+        <synopsis />
+        <name>&lt;Unnamed Scene&gt;</name>
+        <comments />
+        </SceneItem>
+    <GroupItem alterable="True" included="True" level="1" words="207">
+        <synopsis />
+        <name>&lt;Unnamed&gt;</name>
+        <comments />
+        <childs>
+            <SceneItem formatting="normal" included="True" words="207">
+                <content>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</content>
+                <synopsis />
+                <name>&lt;Unnamed Scene&gt;</name>
+                <comments />
+                </SceneItem>
+            </childs>
+        </GroupItem>
+    <SceneItem formatting="normal" included="True" words="69">
+        <content>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</content>
+        <synopsis />
+        <name>&lt;Unnamed Scene&gt;</name>
+        <comments />
+        </SceneItem>
+    </story>
