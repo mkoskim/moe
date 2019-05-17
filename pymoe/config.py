@@ -47,7 +47,8 @@ import shutil   # For copying files
 import moeXML
 from moeXML import ET, ExpatError
 
-scriptname = os.path.realpath(sys.argv[0])
+#scriptname = os.path.realpath(sys.argv[0])
+scriptname = os.path.abspath(sys.argv[0])
 scriptdir  = os.path.abspath(os.path.dirname(scriptname))
 rootdir    = os.path.abspath(os.path.dirname(scriptname)+"/../../")
 defsdir    = os.path.abspath(scriptdir+"/../settings/")
