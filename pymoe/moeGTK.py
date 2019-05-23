@@ -226,11 +226,10 @@ def createTextView(
     textview.set_border_window_size(gtk.TEXT_WINDOW_TOP, pad_topbottom)
     textview.set_border_window_size(gtk.TEXT_WINDOW_BOTTOM, pad_topbottom)
     
-    if bgcolor:
-        textview.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse(bgcolor))
-        textview.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse(bgcolor))
-    else:
-        textview.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#FFFFFF"))
+    if not bgcolor: bgcolor ="#FFFFFF"
+    
+    textview.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse(bgcolor))
+    textview.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse(bgcolor))
     
     if fgcolor: textview.modify_text(gtk.STATE_NORMAL, gtk.gdk.color_parse(fgcolor))
     
