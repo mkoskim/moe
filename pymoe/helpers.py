@@ -142,10 +142,13 @@ if os.name == "posix":
         os.system("nautilus %s &" % (filename))
     
     def execOpenDoc(filename):
-        os.system("libreoffice %s &" % (filename))
+        os.system("xdg-open %s &" % (filename))
     
     def execOpenPDF(filename):
-        ERROR("Configure PDF reader")
+        os.system("xdg-open %s &" % (filename))
+    
+    def execOpenEPUB(filename):
+        os.system("xdg-open %s &" % (filename))
     
 elif os.name == "nt":
 

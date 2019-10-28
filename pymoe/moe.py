@@ -217,7 +217,7 @@ class EditorWindow(gtk.Window):
         
         # Check, if texifier exists
         texifierdir = relpath(conf.rootdir + "/defaults")
-        print "Texifier found:", texifierdir
+        print "Texifier:", texifierdir
         if not os.path.isdir(texifierdir): return
 
         # Save and check file name
@@ -227,18 +227,12 @@ class EditorWindow(gtk.Window):
 
         # Get document directory
         docdir  = os.path.abspath(os.path.dirname(docname))
-        docdefaults = docdir  + "/defaults"
-        
-        # Link texifier here
-        # TODO: If link points to wrong directory, replace it
-
-        if not os.path.isdir(docdefaults):
-            print "Linking:", texifierdir
-            os.system("ln -s %s" % (texifierdir))
 
         # Run texifier
         docbase = os.path.splitext(os.path.basename(docname))[0]
-        os.system("make MAINFILE=%s -f defaults/defaults.mak %s" % (
+        os.system("make -f %s/defaults.mak ROOTDIR=%s DOCNAME=%s %s" % (
+            texifierdir,
+            conf.rootdir,
             docbase,
             fmt)
         )
@@ -249,7 +243,12 @@ class EditorWindow(gtk.Window):
         if exported: execOpenDoc(exported)
         
     def texify2PDF(self, widget, event = None):
-        pass
+        exported = self._texify(widget, "pdf")
+        if exported: execOpenPDF(exported)
+
+    def texify2EPUB(self, widget, event = None):
+        exported = self._texify(widget, "epub")
+        if exported: execOpenEPUB(exported)
 
     #--------------------------------------------------------------------------
     #--------------------------------------------------------------------------
@@ -361,10 +360,11 @@ class EditorWindow(gtk.Window):
             ( "/File/_Reload",  None, self.revert, 0, None),
 
             ( "/File/s2", None, None, 0, "<Separator>" ),
-            ( "/File/Texify",     None, None, 0, "<Branch>"),
-            ( "/File/Texify/RTF", None, self.texify2RTF, 0, None),
-            ( "/File/Texify/PDF", None, self.texify2PDF, 0, None),
-            ( "/File/Export RTF", None, self.export2RTF, 0, None),
+            ( "/File/Texify",      None, None, 0, "<Branch>"),
+            ( "/File/Texify/RTF",  None, self.texify2RTF, 0, None),
+            ( "/File/Texify/PDF",  None, self.texify2PDF, 0, None),
+            ( "/File/Texify/EPUB", None, self.texify2EPUB, 0, None),
+            ( "/File/Export RTF",  None, self.export2RTF, 0, None),
 
             ( "/File/s3", None, None, 0, "<Separator>" ),
             ( "/File/_Close",   "<control>W", self.close, 0, None),
