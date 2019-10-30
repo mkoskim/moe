@@ -137,7 +137,7 @@ if os.name == "posix":
         os.system("gedit %s &" % (filename))
 
     def execOpenFolder(filename):
-        os.system("nautilus %s &" % (filename))
+        os.system("xdg-open %s &" % (filename))
     
     def execOpenDoc(filename):
         os.system("xdg-open %s &" % (filename))
