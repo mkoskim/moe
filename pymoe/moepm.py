@@ -24,17 +24,17 @@ import time
 #
 ###############################################################################
 
-years    = set(["-"])
-statuses = set(["-"])
-editors  = set(["-"])
-doctypes = set(["-"])
+years    = set()
+statuses = set()
+editors  = set()
+doctypes = set()
 
 def resetSets():
     global years, statuses, editors, doctypes
-    years    = set(["-"])
-    statuses = set(["-"])
-    editors  = set(["-"])
-    doctypes = set(["-"])
+    years    = set()
+    statuses = set()
+    editors  = set()
+    doctypes = set()
 
 ###############################################################################
 #
