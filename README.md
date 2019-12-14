@@ -1,9 +1,12 @@
 
 
-
 MOE editor for writers
-====================
+======================
 
+**Status:** moe (My/Markus' Own Editor) is superseded by Mawe (My/Markus'
+Advanced Writer's Editor): https://github.com/mkoskim/mawe
+
+---
 
 **In English:** moe - let's say it's abbreviation from Markus' Own Editor - is a
 text editor for fiction writers. Like the other similar editors, its main
