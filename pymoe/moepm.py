@@ -131,6 +131,37 @@ def extractMoeProject(filename):
    
 ###############################################################################
 #
+# Extracting info from mawe projects
+#
+###############################################################################
+
+def extractMaweProject(filename):
+    def text(elem, field):
+        elem = elem.find(field)
+        if elem != None and elem.text != None:
+            return elem.text
+        else:
+            return "-"
+
+    try:
+        tree = ET.ElementTree(ET.fromstring(readfile(filename)))
+    except (SyntaxError, ExpatError):
+        return None
+
+    elem = tree.find("./body/head")
+    return Project(
+        "mawe",
+        "-",
+        text(elem, "title"),
+        text(elem, "subtitle"),
+        text(elem, "year"),
+        text(elem, "status"),
+        text(elem, "deadline"),
+        elem.get("words")
+    )
+   
+###############################################################################
+#
 # Extracting info from old-style directory
 #
 ###############################################################################
@@ -328,6 +359,16 @@ class ProjectStore(gtk.ListStore):
                 project = extractMoeProject(fullname(f))
                 self._storeProject(fullname(f), project)
             return
+            
+        #----------------------------------------------------------------------
+
+        mawefiles = filter(
+            lambda f: os.path.splitext(f)[1] == ".mawe", files
+        )
+        if len(mawefiles):
+            for f in mawefiles:
+                project = extractMaweProject(fullname(f))
+                self._storeProject(fullname(f), project)
             
         #----------------------------------------------------------------------
         # Does this directory contain Makefile? If so, extract
@@ -562,6 +603,8 @@ class ProjectIndexView(gtk.ScrolledWindow):
         item = view.get_model()[path][1]
         if item != None and item.editor == "moe":
             execMoe(filename)
+        elif item != None and item.editor == "mawe":
+            execMawe(filename)
         elif os.path.isfile(filename):
             execEdit(filename)
         else:
@@ -576,6 +619,12 @@ class ProjectIndexView(gtk.ScrolledWindow):
         path, col = treeview.get_cursor()
         filename = treeview.get_model()[path][0]
         execMoe(filename)
+            
+    def openWithMawe(self, action, menuitem):
+        treeview = self.treeview
+        path, col = treeview.get_cursor()
+        filename = treeview.get_model()[path][0]
+        execMawe(filename)
             
     def openWithGedit(self, action, menuitem):
         treeview = self.treeview
@@ -599,6 +648,7 @@ class ProjectIndexView(gtk.ScrolledWindow):
             # Project menu
             #------------------------------------------------------------------
             ( "/Open With moe", None, self.openWithMoe, 0, None ),
+            ( "/Open With mawe", None, self.openWithMawe, 0, None ),
             ( "/Open With text editor", None, self.openWithGedit, 0, None ),
             ( "/Open Folder", None, self.openFolder, 0, None ),
         )
@@ -755,6 +805,9 @@ class ProjectWindow(gtk.Window):
     def cbNewMoe(self, widget, event = None):
         execMoe("--new")
 
+    def cbNewMawe(self, widget, event = None):
+        execMawe("--new")
+
     #--------------------------------------------------------------------------
     #--------------------------------------------------------------------------
 
@@ -772,13 +825,13 @@ class ProjectWindow(gtk.Window):
             # Project menu
             #------------------------------------------------------------------
 
-            ( "/_File", None, None, 0, "<Branch>" ),
-            ( "/File/New",     None, self.cbNewMoe, 0, None),
-
-            ( "/File/s1", None, None, 0, "<Separator>" ),
-            ( "/File/_Refresh",  None, self.cbRefresh, 0, None),
+            ( "/_File",         None, None, 0, "<Branch>" ),
+            ( "/File/New Moe",  None, self.cbNewMoe, 0, None),
+            ( "/File/New Mawe", None, self.cbNewMawe, 0, None),
+            ( "/File/s1",       None, None, 0, "<Separator>" ),
+            ( "/File/_Refresh", "F5", self.cbRefresh, 0, None),
             
-            ( "/File/s2", None, None, 0, "<Separator>" ),
+            ( "/File/s2",       None, None, 0, "<Separator>" ),
             ( "/File/_Quit",    "<control>Q", self.exit, 0, None),
 
             #------------------------------------------------------------------

@@ -128,6 +128,12 @@ if os.name == "posix":
             filename or "--new")
         )
 
+    def execMawe(filename = None):
+        os.system("%s %s &" % (
+            os.path.join(conf.scriptdir, "../../mawe/mawe.py"),
+            filename or "--new")
+        )
+
     def execMoePM():
         os.system("%s &" % (
             os.path.join(conf.scriptdir, "moepm.py"))
