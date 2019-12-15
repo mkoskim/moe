@@ -157,7 +157,7 @@ def extractMaweProject(filename):
         text(elem, "year"),
         text(elem, "status"),
         text(elem, "deadline"),
-        elem.get("words")
+        text(elem, "words")
     )
    
 ###############################################################################
@@ -369,7 +369,8 @@ class ProjectStore(gtk.ListStore):
             for f in mawefiles:
                 project = extractMaweProject(fullname(f))
                 self._storeProject(fullname(f), project)
-            
+            return
+
         #----------------------------------------------------------------------
         # Does this directory contain Makefile? If so, extract
         # project and continue deeper.
