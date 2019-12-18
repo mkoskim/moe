@@ -157,7 +157,7 @@ def extractMaweProject(filename):
         text(elem, "year"),
         text(elem, "status"),
         text(elem, "deadline"),
-        text(elem, "words")
+        text(elem, "words/text")
     )
    
 ###############################################################################
