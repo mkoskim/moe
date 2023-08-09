@@ -3,8 +3,9 @@
 MOE editor for writers
 ======================
 
-**Status:** moe (My/Markus' Own Editor) is superseded by Mawe (My/Markus'
-Advanced Writer's Editor): https://github.com/mkoskim/mawe
+**Status:** MOE (My/Markus' Own Editor) is archived.
+
+It is superseded by Mawe (My/Markus' Advanced Writer's Editor). See MaweJS: https://github.com/mkoskim/mawejs
 
 ---
 
